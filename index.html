@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b67">
+  <meta name="description" content="Acompanhe o transporte escolar, consulte o trajeto e veja avisos.">
+  <title>Rota Escolar | Acompanhamento</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main id="login-screen" class="login-screen">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="brand brand-login">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="5" y="12" width="38" height="25" rx="6"/><path d="M10 12V8h22l6 4M11 20h26M14 31h.1M34 31h.1"/><circle cx="15" cy="36" r="4"/><circle cx="33" cy="36" r="4"/></svg></span>
+        <span><strong>Rota Escolar</strong><small>ACOMPANHAMENTO</small></span>
+      </div>
+      <div class="login-heading">
+        <span class="eyebrow">BEM-VINDO(A)</span>
+        <h1 id="login-title">Acompanhe o transporte escolar</h1>
+        <p>Tenha as informações da viagem do seu aluno em um só lugar.</p>
+      </div>
+      <form id="login-form" novalidate>
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="username" placeholder="seu@email.com" required>
+        <label for="password">Senha</label>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required>
+          <button type="button" id="toggle-password" class="password-toggle" aria-label="Mostrar senha" title="Mostrar senha">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <p id="login-error" class="form-error" role="alert" aria-live="polite"></p>
+        <button class="btn btn-primary btn-full" type="submit"><span>Entrar</span><span aria-hidden="true">→</span></button>
+      </form>
+      <div class="demo-credentials"><span class="demo-icon">i</span><div><strong>Acesso para demonstração</strong><span>E-mail: mariana@email.com</span><span>Senha: escola123</span></div></div>
+      <p class="login-foot">Versão demonstrativa · Dados fictícios</p>
+    </section>
+    <aside class="login-aside" aria-hidden="true">
+      <div class="aside-orb orb-one"></div><div class="aside-orb orb-two"></div>
+      <div class="aside-content">
+        <div class="aside-illustration">
+          <div class="sun"></div><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+          <div class="hill hill-back"></div><div class="hill hill-front"></div>
+          <div class="road"><span class="road-line"></span></div>
+          <div class="van"><div class="van-top"></div><div class="van-body"><span></span><span></span><span></span></div><i class="wheel wheel-a"></i><i class="wheel wheel-b"></i></div>
+          <div class="pin pin-a">●</div><div class="pin pin-b">◆</div>
+        </div>
+        <span class="eyebrow aside-eyebrow">MAIS TRANQUILIDADE NO DIA A DIA</span>
+        <h2>Informação para acompanhar cada caminho.</h2>
+        <p>Consulte o andamento da viagem e fique por dentro dos comunicados do transporte escolar.</p>
+      </div>
+    </aside>
+  </main>
+
+  <div id="app" class="app-shell" hidden>
+    <aside class="sidebar">
+      <a class="brand sidebar-brand" href="#" data-page="dashboard" aria-label="Rota Escolar - início">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="5" y="12" width="38" height="25" rx="6"/><path d="M10 12V8h22l6 4M11 20h26M14 31h.1M34 31h.1"/><circle cx="15" cy="36" r="4"/><circle cx="33" cy="36" r="4"/></svg></span>
+        <span><strong>Rota Escolar</strong><small>ACOMPANHAMENTO</small></span>
+      </a>
+      <div class="nav-label">MENU PRINCIPAL</div>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">⌂</span><span>Acompanhamento</span></button>
+        <button class="nav-link" data-page="route"><span class="nav-icon">⌖</span><span>Trajeto</span></button>
+        <button class="nav-link" data-page="notices"><span class="nav-icon">▤</span><span>Avisos</span><span id="nav-unread" class="nav-count">1</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">?</span><div><strong>Precisa de ajuda?</strong><p>Esta é uma versão de demonstração.</p></div></div>
+        <button id="sidebar-logout" class="logout-link"><span>↪</span> Sair da conta</button>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button id="mobile-menu" class="mobile-menu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <div class="topbar-context"><span class="topbar-kicker">ÁREA DO RESPONSÁVEL</span><strong>Portal de acompanhamento</strong></div>
+        <div class="user-menu"><div class="avatar">MO</div><div class="user-copy"><strong>Mariana Oliveira</strong><span>Responsável</span></div><button id="logout" class="icon-button" aria-label="Sair da conta" title="Sair">↪</button></div>
+      </header>
+      <main id="page-content" class="page-content" tabindex="-1"></main>
+      <footer class="app-footer"><span>© 2026 Rota Escolar</span><span><i class="footer-dot"></i> Ambiente de demonstração · Localização simulada</span></footer>
+    </div>
+    <div id="mobile-overlay" class="mobile-overlay"></div>
+  </div>
+</body>
+</html>
